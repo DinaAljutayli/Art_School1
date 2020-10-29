@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ِArtSchool</string>
+    <string name="welcome_to_art_school">Welcome to Art School</string>
+    <string name="next">Next</string>
+    <string name="username">Username</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="section_7c4">Section 7C4</string>
+    <string name="previous">Previous</string>
+    <string name="show">Show</string>
+    <string name="submit">Submit</string>
+    <string name="student_information">Student Information</string>
+    <string name="name">Name</string>
+    <string name="student_id">Student ID</string>
+    <string name="grade">Grade</string>
+</resources>
