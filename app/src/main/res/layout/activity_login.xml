@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,20 +11,21 @@
         android:id="@+id/login_butto"
         android:layout_width="252dp"
         android:layout_height="56dp"
+        android:layout_below="@id/password_editext_login"
         android:layout_marginStart="77dp"
-        android:layout_marginLeft="77dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="51dp"
         android:layout_marginEnd="82dp"
         android:layout_marginRight="82dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="108dp"
         android:background="@drawable/circle"
+        android:gravity="center"
         android:text="@string/login"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -35,22 +36,41 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="38dp"
         android:layout_marginRight="38dp"
-        android:layout_marginBottom="382dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/login1" />
 
     <EditText
+        android:layout_marginLeft="40dp"
+        android:layout_below="@id/username_editext_login"
+        android:id="@+id/password_editext_login"
+        android:layout_width="334dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_editext_login"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginStart="40dp" />
+
+    <EditText
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/imageView3"
         android:id="@+id/username_editext_login"
         android:layout_width="335dp"
         android:layout_height="48dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginLeft="38dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
@@ -58,27 +78,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        android:autofillHints="" />
+        android:layout_marginStart="40dp" />
 
-    <EditText
-        android:id="@+id/password_editext_login"
-        android:layout_width="334dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
-        android:layout_marginBottom="230dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_editext_login"
-        app:layout_constraintVertical_bias="0.0"
-        android:autofillHints="" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

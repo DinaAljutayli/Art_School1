@@ -21,6 +21,7 @@ public class wActivity extends AppCompatActivity {
         setContentView(R.layout.activity_w);
 
         hellouser = findViewById(R.id.helloUser);
+
         Bundle extras = getIntent().getExtras();
         String username = null;
         if (extras != null) {

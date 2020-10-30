@@ -2,77 +2,69 @@ package com.example.artschool;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.annotation.Nullable;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME ="Art.db";
-    private SQLiteDatabase db;
 
-    //login table
-    public static final String TABLE_LOGIN ="loginuser";
-    public static final String COL_USERNAME ="Username";
-    public static final String COL_Password ="password";
-    private static final String LOGIN_TABLE = "CREATE TABLE " + TABLE_LOGIN + "(" + COL_USERNAME + " TEXT ," + COL_Password + " TEXT," + ")";
+    public static String DATABASE_NAME ="art.db";
 
-    //student table
-    public static final String TABLE_StudenINFO = "StudentInfo";
-    public static final String COL_Name = "Name";
-    public static final String COL_ID = " ID";
-    public static final String COL_Grade = "Grade";
-    private static final String Student_TABLE = "CREATE TABLE " + TABLE_StudenINFO + "(" + COL_Name + " TEXT ," + COL_Grade + " TEXT," + COL_ID + " PRIMARY KEY" + ")";
+    public static String DATABASE_TABLE = "students";
+    public static String COL_NAME ="_name";
+    public static String COL_ID ="_id";
+    public static String COL_GRADE ="_grade";
 
-    public DatabaseHelper(Context context){
 
+
+    public DatabaseHelper( Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
-
+    @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        db.execSQL(LOGIN_TABLE);
-        db.execSQL(Student_TABLE);
+
+        final String quryAdd = "CREATE TABLE "+ DATABASE_TABLE + " (" +
+                COL_ID + " TEXT, "+
+                COL_GRADE + " TEXT, "+
+                COL_NAME + " TEXT);";
+
+        sqLiteDatabase.execSQL(quryAdd);
 
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_LOGIN + TABLE_StudenINFO);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
         onCreate(sqLiteDatabase);
+
     }
 
+    public long addStudent(String name,String id,String grade)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
 
-    public long addusert(String username, String password ){
-        // SQLiteDatabase db = this.getWritableDatabase();
-        openDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("Username",username);
-        contentValues.put("Password",password);
-        long res = db.insert("LOGIN_TABLE",null,contentValues);
-        db.close();
-        return  res;
+        ContentValues cv = new ContentValues();
+        cv.put(COL_NAME, name);
+        cv.put(COL_ID,id);
+        cv.put(COL_GRADE,grade);
+
+        long res = db.insert(DATABASE_TABLE,null,cv);
+
+        return res;
     }
 
+    public Cursor getAllData()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select * from "+ DATABASE_TABLE , null);
+        return c;
 
-    public long addStudent(String name, String id , String grade){
-       // SQLiteDatabase db = this.getWritableDatabase();
-        openDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("Name",name);
-        contentValues.put("ID",id);
-        contentValues.put("Grade",grade);
-        long res = db.insert("StudentInfo",null,contentValues);
-        db.close();
-        return  res;
+
+
     }
-
-
-    public void openDatabase() {
-        db = this.getWritableDatabase();
-    }
-
-
-
 }

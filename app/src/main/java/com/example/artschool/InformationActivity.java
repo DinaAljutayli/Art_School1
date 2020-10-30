@@ -3,10 +3,13 @@ package com.example.artschool;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class InformationActivity extends AppCompatActivity {
@@ -17,6 +20,7 @@ public class InformationActivity extends AppCompatActivity {
     EditText grade;
     Button submit_Button;
     Button show_Button;
+    TextView tv_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +42,21 @@ public class InformationActivity extends AppCompatActivity {
                 String ID = Id.getText().toString().trim();
                 String Grade = grade.getText().toString().trim();
 
-                if(view.getId()==R.id.submitButton){
 
-                   db.addStudent(Name , ID , Grade);
-                    Toast.makeText(InformationActivity.this,"Data Inserted To Sqlite DataBase" , Toast.LENGTH_LONG).show();
+                        db.addStudent(Name, ID, Grade);
+                        Toast.makeText(InformationActivity.this, "Data Inserted To Sqlite DataBase", Toast.LENGTH_LONG).show();
+            }
+        });
 
 
-                }else if(view.getId()==R.id.showButton){
-                    Intent showIntent = new Intent(InformationActivity.this , ShowDataActivity.class);
-                    startActivity(showIntent);
-                }
+        show_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent showIntent = new Intent(InformationActivity.this, ShowDataActivity.class);
+                startActivity(showIntent);
+
+
+
 
             }
         });

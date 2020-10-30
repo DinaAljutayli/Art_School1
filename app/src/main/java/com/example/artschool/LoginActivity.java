@@ -34,8 +34,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user = username_editext_login.getText().toString().trim();
                 String password = password_editext_login.getText().toString().trim();
-                db.addusert(user,password);
+              //  db.addusert(user,password);
                 Intent wIntent = new Intent(LoginActivity.this, wActivity.class);
+                wIntent.putExtra("username", username_editext_login.getText().toString());
                 startActivity(wIntent);
 
                 }});
